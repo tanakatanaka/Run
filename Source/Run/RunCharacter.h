@@ -64,6 +64,9 @@ protected:
 	// To add mapping context
 	virtual void BeginPlay();
 
+	// To add mapping context
+	virtual void Tick(float DeltaTime);
+
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
