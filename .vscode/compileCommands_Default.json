@@ -1,0 +1,58 @@
+[
+	{
+		"file": "E:\\ue\\Run\\Source\\Run\\Run.Build.cs",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Default\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "E:\\ue\\Run\\Source\\Run\\Run.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Default\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "E:\\ue\\Run\\Source\\Run\\Run.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Default\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "E:\\ue\\Run\\Source\\Run\\RunCharacter.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Default\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "E:\\ue\\Run\\Source\\Run\\RunCharacter.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Default\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "E:\\ue\\Run\\Source\\Run\\RunGameMode.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Default\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "E:\\ue\\Run\\Source\\Run\\RunGameMode.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Default\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	}
+]
