@@ -106,9 +106,12 @@ void ARunCharacter::Move(const FInputActionValue& Value)
 
 		// get forward vector
 		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+
+		// get right vector 
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
 		// add movement 
+		AddMovementInput(ForwardDirection, MovementVector.Y);
 		AddMovementInput(RightDirection, MovementVector.X);
 	}
 }
@@ -124,13 +127,4 @@ void ARunCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
-}
-
-void ARunCharacter::Tick(float DeltaTime)
-{
-	// Call the base class  
-	Super::Tick(DeltaTime);
-
-	FVector MyVector(1, 0, 0);
-	AddMovementInput(MyVector, 1.0f);
 }
