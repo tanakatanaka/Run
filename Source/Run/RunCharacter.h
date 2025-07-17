@@ -36,6 +36,7 @@ class ARunCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
+
 public:
 	ARunCharacter();
 	
@@ -56,6 +57,7 @@ protected:
 	// To add mapping context
 	virtual void BeginPlay();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool isAiming;
 };
 

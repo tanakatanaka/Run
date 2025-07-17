@@ -98,9 +98,10 @@ void ARunCharacter::Move(const FInputActionValue& Value)
 		// get right vector 
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
-		if(!isAiming)
+		if(isAiming)
 		{
-			return;
+			MovementVector.Y = 0;
+			MovementVector.X = 0;
 		}
 
 		// add movement 
