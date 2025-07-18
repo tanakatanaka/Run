@@ -38,6 +38,8 @@ ARunCharacter::ARunCharacter()
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
+
+	isOrbiting = false;
 }
 
 void ARunCharacter::BeginPlay()
@@ -86,6 +88,12 @@ void ARunCharacter::Move(const FInputActionValue& Value)
 
 	if (Controller != nullptr)
 	{
+		if (isOrbiting)
+		{
+			//MoveOrbiting(Value);
+			return;
+		}
+
 		// find out which way is forward
 		const FRotator Rotation = Controller->GetControlRotation();
 		const FRotator YawRotation(0, Rotation.Yaw, 0);
@@ -113,4 +121,9 @@ void ARunCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void ARunCharacter::MoveOrbiting(const FInputActionValue& Value)
+{
+
 }

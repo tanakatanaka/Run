@@ -39,7 +39,6 @@ class ARunCharacter : public ACharacter
 
 public:
 	ARunCharacter();
-	
 
 protected:
 
@@ -56,5 +55,15 @@ protected:
 	
 	// To add mapping context
 	virtual void BeginPlay();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool isOrbiting;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//AActor targetActor;
+
+private:
+	void MoveOrbiting(const FInputActionValue& Value);
+
 };
 
