@@ -38,8 +38,6 @@ ARunCharacter::ARunCharacter()
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 	GetCharacterMovement()->BrakingDecelerationFalling = 1500.0f;
-
-	isAiming = false;
 }
 
 void ARunCharacter::BeginPlay()
@@ -97,12 +95,6 @@ void ARunCharacter::Move(const FInputActionValue& Value)
 
 		// get right vector 
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-
-		if(isAiming)
-		{
-			MovementVector.Y = 0;
-			MovementVector.X = 0;
-		}
 
 		// add movement 
 		AddMovementInput(ForwardDirection, MovementVector.Y);

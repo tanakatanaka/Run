@@ -1,5 +1,37 @@
 [
 	{
+		"file": "E:\\ue\\Run\\Source\\Run\\Bullet.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Run\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "E:\\ue\\Run\\Source\\Run\\Bullet.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Run\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "E:\\ue\\Run\\Source\\Run\\Gun.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Run\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "E:\\ue\\Run\\Source\\Run\\Gun.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\ue\\Run\\.vscode\\compileCommands_Run\\Run.1.rsp"
+		],
+		"directory": "D:\\ue_\\UE_5.3\\Engine\\Source"
+	},
+	{
 		"file": "E:\\ue\\Run\\Source\\Run\\Run.Build.cs",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\Hostx64\\x64\\cl.exe",

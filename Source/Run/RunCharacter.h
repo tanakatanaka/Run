@@ -56,8 +56,5 @@ protected:
 	
 	// To add mapping context
 	virtual void BeginPlay();
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool isAiming;
 };
 
