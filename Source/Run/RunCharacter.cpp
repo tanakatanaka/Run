@@ -90,7 +90,7 @@ void ARunCharacter::Move(const FInputActionValue& Value)
 	{
 		if (isOrbiting)
 		{
-			//MoveOrbiting(Value);
+			MoveOrbiting(Value);
 			return;
 		}
 
@@ -125,5 +125,24 @@ void ARunCharacter::Look(const FInputActionValue& Value)
 
 void ARunCharacter::MoveOrbiting(const FInputActionValue& Value)
 {
+	FVector2D Input = Value.Get<FVector2D>();
+	if (!targetActor || Input.IsNearlyZero()) return;
+
+	FVector CenterLocation = targetActor->GetActorLocation();
+	FVector SelfLocation = GetActorLocation();
+
+	// 中心→自分のベクトル（XY平面）
+	FVector ToSelf = SelfLocation - CenterLocation;
+	ToSelf.Z = 0.0f; // Z軸無視
+	ToSelf.Normalize();
+
+	// 円周方向の接線ベクトル（右回り or 左回り）
+	FVector TangentDirection = FVector(-ToSelf.Y, ToSelf.X, 0.0f); // 90度回転（左回り）
+
+	// 入力に応じて加える
+	AddMovementInput(TangentDirection, Input.X); // X: 左右移動で回転
+
+	// （任意）中心方向に動かす（Y入力で近づく／離れる）
+	AddMovementInput(ToSelf, Input.Y); // 前後で距離を変える
 
 }

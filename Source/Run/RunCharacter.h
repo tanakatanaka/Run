@@ -59,8 +59,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool isOrbiting;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	//AActor targetActor;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	AActor* targetActor;
 
 private:
 	void MoveOrbiting(const FInputActionValue& Value);
