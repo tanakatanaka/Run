@@ -149,18 +149,18 @@ void ARunCharacter::MoveOrbiting(const FInputActionValue& Value)
 	ToSelf.Normalize();
 
 	// 円周方向の接線ベクトル（右回り or 左回り）
-	FVector TangentDirection = FVector(-ToSelf.Y, ToSelf.X, 0.0f); // 90度回転（左回り）
+	FVector TangentDirection = FVector(ToSelf.Y, ToSelf.X, 0.0f); // 90度回転（左回り）
 
 	// 入力に応じて加える
-	AddMovementInput(TangentDirection, -Input.X); // X: 左右移動で回転
-	AddMovementInput(ToSelf, -Input.Y); 
+	AddMovementInput(TangentDirection, -Input.X); 
+	AddMovementInput(ToSelf, Input.Y); 
 
 	// 中心を向く
 	FVector ToCenter = centerLocation - selfLocation;
 	ToCenter.Z = 0.0f;
 
 	FRotator TargetRotation = ToCenter.Rotation();
-	FRotator NewRotation = FMath::RInterpTo(GetActorRotation(), TargetRotation, GetWorld()->GetDeltaSeconds(), 0.0f);
+	FRotator NewRotation = FMath::RInterpTo(GetActorRotation(), TargetRotation, GetWorld()->GetDeltaSeconds(), 5.0f);
 	SetActorRotation(NewRotation);
 
 }
