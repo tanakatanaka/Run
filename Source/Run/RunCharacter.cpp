@@ -126,13 +126,25 @@ void ARunCharacter::Look(const FInputActionValue& Value)
 void ARunCharacter::MoveOrbiting(const FInputActionValue& Value)
 {
 	FVector2D Input = Value.Get<FVector2D>();
-	if (!targetActor || Input.IsNearlyZero()) return;
+	if (!targetActor || Input.IsNearlyZero())
+	{
+		return;
+	}
 
-	FVector CenterLocation = targetActor->GetActorLocation();
-	FVector SelfLocation = GetActorLocation();
+	FVector centerLocation = targetActor->GetActorLocation();
+	FVector selfLocation = GetActorLocation();
+
+	// 距離チェック
+	float Distance = FVector::Dist2D(centerLocation, selfLocation);
+
+	if (Distance > MaxOrbitRadius)
+	{
+		isOrbiting = false;
+		return;
+	}
 
 	// 中心→自分のベクトル（XY平面）
-	FVector ToSelf = SelfLocation - CenterLocation;
+	FVector ToSelf = selfLocation - centerLocation;
 	ToSelf.Z = 0.0f; // Z軸無視
 	ToSelf.Normalize();
 
@@ -140,9 +152,15 @@ void ARunCharacter::MoveOrbiting(const FInputActionValue& Value)
 	FVector TangentDirection = FVector(-ToSelf.Y, ToSelf.X, 0.0f); // 90度回転（左回り）
 
 	// 入力に応じて加える
-	AddMovementInput(TangentDirection, Input.X); // X: 左右移動で回転
+	AddMovementInput(TangentDirection, Input.X); 
+	AddMovementInput(ToSelf, Input.Y);
 
-	// （任意）中心方向に動かす（Y入力で近づく／離れる）
-	AddMovementInput(ToSelf, Input.Y); // 前後で距離を変える
+	// 中心を向く
+	FVector ToCenter = centerLocation - selfLocation;
+	ToCenter.Z = 0.0f;
+
+	FRotator TargetRotation = ToCenter.Rotation();
+	FRotator NewRotation = FMath::RInterpTo(GetActorRotation(), TargetRotation, GetWorld()->GetDeltaSeconds(), 0.0f);
+	SetActorRotation(NewRotation);
 
 }

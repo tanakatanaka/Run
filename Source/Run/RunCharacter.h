@@ -62,6 +62,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	AActor* targetActor;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float MaxOrbitRadius = 800.0f; // îCà”ÇÃç≈ëÂîºåa
+
 private:
 	void MoveOrbiting(const FInputActionValue& Value);
 
