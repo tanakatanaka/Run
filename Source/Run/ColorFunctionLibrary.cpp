@@ -44,12 +44,11 @@ float UColorFunctionLibrary::GetCleaningRate(UTextureRenderTarget2D* RenderTarge
 
     for (const FColor& Pixel : OutBMP)
     {
-        // •‚Á‚Û‚¯‚ê‚Î‘|œÏ‚İ‚Æ‚İ‚È‚·
-        if (Pixel.A == 255)
+        if (!(Pixel.R == 255 && Pixel.G == 255 && Pixel.B == 255))
         {
             CleanCount++;
         }
     }
 
-    return (float)CleanCount / (float)TotalCount; // ‘|œ—¦i0.0`1.0j
+    return (float)CleanCount / (float)TotalCount; // ï¿½|ï¿½ï¿½ï¿½ï¿½ï¿½i0.0ï¿½`1.0ï¿½j
 }
