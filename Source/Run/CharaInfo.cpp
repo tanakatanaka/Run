@@ -18,12 +18,14 @@ void ACharaInfo::SetupBaseParam()
 	_hp = _maxhp;
 }
 
-bool ACharaInfo::CheckHP(int point)
+
+
+bool ACharaInfo::IsDead()
 {
-	if (_hp + point < 0)
+	if (_hp <= 0)
 	{
-		return false;
+		return true;
 	}
 
-	return true;
+	return false;
 }

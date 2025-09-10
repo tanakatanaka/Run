@@ -22,13 +22,16 @@ public:
 		FORCEINLINE void UpdateHP(int hp) { _hp = hp; }
 
 	UFUNCTION(BlueprintCallable)
+		FORCEINLINE void CalculateHP(int damage) { _hp = _hp - damage; }
+
+	UFUNCTION(BlueprintCallable)
 		FORCEINLINE  int GetHP() { return _hp; }
 
 	UFUNCTION(BlueprintCallable)
 		FORCEINLINE  int GetMaxHP() { return _maxhp; }
 
 	UFUNCTION(BlueprintCallable)
-		bool CheckHP(int point);
+		bool IsDead();
 
 private:
 	int _hp;
