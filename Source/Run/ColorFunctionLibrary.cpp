@@ -1,8 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "ColorFunctionLibrary.h"
 #include "Kismet/KismetRenderingLibrary.h"
 #include "Engine/Texture2D.h"
-#include "ColorFunctionLibrary.h"
+
 
 FLinearColor UColorFunctionLibrary::GetAverageColorFromRT(UTextureRenderTarget2D* RT)
 {
@@ -54,16 +55,46 @@ float UColorFunctionLibrary::GetCleaningRate(UTextureRenderTarget2D* RenderTarge
     return (float)CleanCount / (float)TotalCount; // �|�����i0.0�`1.0�j
 }
 
-void UColorFunctionLibrary::CopyTextureToRenderTarget(UTexture* Source, UTextureRenderTarget2D* Destination)
+UTextureRenderTarget2D* UColorFunctionLibrary::DuplicateRenderTarget(
+    UObject* WorldContextObject,
+    UTextureRenderTarget2D* Source
+)
 {
-    if (!Source || !Destination) return;
+    if (!Source || !WorldContextObject)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("DuplicateRenderTarget: Invalid Source or Context."));
+        return nullptr;
+    }
 
-    // RenderTargetのRHI取得
-    FTextureRenderTargetResource* DestResource = Destination->GameThread_GetRenderTargetResource();
-    if (!DestResource) return;
+    // 新しいRenderTargetを生成
+    UTextureRenderTarget2D* NewRT = NewObject<UTextureRenderTarget2D>(
+        WorldContextObject,
+        UTextureRenderTarget2D::StaticClass()
+    );
 
-    FRHITexture* SrcRHI = Source->Resource ? Source->Resource->TextureRHI.GetReference() : nullptr;
-    FRHITexture* DstRHI = DestResource->GetRenderTargetTexture();
-    if (!SrcRHI || !DstRHI) return;
+    // 同じフォーマットとサイズで初期化
+    NewRT->RenderTargetFormat = Source->RenderTargetFormat;
+    NewRT->bAutoGenerateMips = false;
+    NewRT->InitAutoFormat(Source->SizeX, Source->SizeY);
+    NewRT->UpdateResourceImmediate(true);
 
+    // GPUで内容をコピー
+    ENQUEUE_RENDER_COMMAND(CopyRTCommand)(
+        [Source, NewRT](FRHICommandListImmediate& RHICmdList)
+    {
+        if (!Source->GetRenderTargetResource() || !NewRT->GetRenderTargetResource())
+        {
+            return;
+        }
+
+        FRHICopyTextureInfo CopyInfo;
+        RHICmdList.CopyTexture(
+            Source->GetRenderTargetResource()->GetRenderTargetTexture(),
+            NewRT->GetRenderTargetResource()->GetRenderTargetTexture(),
+            CopyInfo
+        );
+    }
+    );
+
+    return NewRT;
 }

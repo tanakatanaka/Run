@@ -21,6 +21,9 @@ class RUN_API UColorFunctionLibrary : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintCallable, Category = "Cleaning")
 	static float GetCleaningRate(UTextureRenderTarget2D* RenderTarget);
 
-	UFUNCTION(BlueprintCallable, Category = "Rendering|RenderTarget", meta = (WorldContext = "WorldContextObject"))
-		static void CopyTextureToRenderTarget(UTexture* Source, UTextureRenderTarget2D* Destination);
+	UFUNCTION(BlueprintCallable, Category = "Rendering", meta = (WorldContext = "WorldContextObject"))
+		static UTextureRenderTarget2D* DuplicateRenderTarget(
+			UObject* WorldContextObject,
+			UTextureRenderTarget2D* Source
+		);
 };
