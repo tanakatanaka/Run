@@ -53,17 +53,3 @@ float UColorFunctionLibrary::GetCleaningRate(UTextureRenderTarget2D* RenderTarge
 
     return (float)CleanCount / (float)TotalCount; // �|�����i0.0�`1.0�j
 }
-
-void UColorFunctionLibrary::CopyTextureToRenderTarget(UTexture* Source, UTextureRenderTarget2D* Destination)
-{
-    if (!Source || !Destination) return;
-
-    // RenderTargetのRHI取得
-    FTextureRenderTargetResource* DestResource = Destination->GameThread_GetRenderTargetResource();
-    if (!DestResource) return;
-
-    FRHITexture* SrcRHI = Source->Resource ? Source->Resource->TextureRHI.GetReference() : nullptr;
-    FRHITexture* DstRHI = DestResource->GetRenderTargetTexture();
-    if (!SrcRHI || !DstRHI) return;
-
-}
